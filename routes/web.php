@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostControler;
 use App\Models\Category;
 use App\Models\User;
@@ -67,16 +68,20 @@ Route::get('/author/{user:username}', function(User $user){
     ]);
 });
 
-// controler menampilkan view login
-Route::get('/login',[LoginController::class,'index']);
+// route menampilkan view login
+Route::get('/login',[LoginController::class,'index'])->name('login')->middleware('guest');
 
-// controler authentication login
+// route ke fungsi logout
+Route::post('/logout',[LoginController::class,'logout']);
+
+// route authentication login
 Route::post('/login',[LoginController::class,'authenticate']);
 
-// controler menampilkan view register
+// route menampilkan view register
 Route::get('/register',[RegisterController::class,'index']);
 
-//controler verification register
-Route::post('/register',[RegisterController::class,'store']);
+//route verification register
+Route::post('/register',[RegisterController::class,'store'])->middleware('guest');
 
-// 
+//route view dashboard
+Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth');

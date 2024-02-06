@@ -11,7 +11,7 @@
       </div>
       @endif
 
-      @if (session()->has('Error'))    
+      @if (session()->has('loginError'))    
       <div class="alert alert-danger alert-dismissible fade show" role="alert">
         {{ session('loginError') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -23,7 +23,7 @@
             <form action="/login" method="post">
               @csrf
               <div class="form-floating">
-                <input type="email" name = "email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" autofocus required value = "{{ old('email') }}">
+                <input type="email" name ="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" autofocus required value = "{{ old('email') }}">
                 <label for="floatingInput" >Email address</label>
                 @error('email')
                     <div class="invalid-feedback">
@@ -31,8 +31,8 @@
                     </div>
                 @enderror
               </div>
-              <div class="form-floating">
-                <input type="password" class="form-control" name="passwors" id="password" placeholder="Password" required>
+              <div class="form-floating" mt-5>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
                 <label for="floatingPassword">Password</label>
               </div>
           
