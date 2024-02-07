@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\PostControler;
 use App\Models\Category;
 use App\Models\User;
@@ -84,4 +84,8 @@ Route::get('/register',[RegisterController::class,'index']);
 Route::post('/register',[RegisterController::class,'store'])->middleware('guest');
 
 //route view dashboard
-Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth');
+Route::get('/dashboard',function(){
+    return view('dashboard.index');
+})->middleware('auth');
+
+Route::resource('/dashboard/posts',DashboardPostController::class)->middleware('auth');
