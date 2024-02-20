@@ -1,10 +1,13 @@
 @extends('dashboard.layouts.main')
 @section('container')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row my-3">
+        <div class="col-lg-8">
             <h1 class="mb-5">{{ $post->title }}</h1>
-            <p>By. <a href="" class="text-decoration-none"> {{ $post->user->name }}</a> in <a href="/blog?category={{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a></p>
+            <a href="/dashboard/posts" class="btn btn-success"> <span data-feather="arrow-left"></span>Back to all my post</a>
+            <a href="" class="btn btn-success"> <span data-feather="edit"></span>edit</a>
+            <a href="" class="btn btn-danger"> <span data-feather="x-circle"></span>delete</a>
+            
             <img src="https://source.unsplash.com/200x75?{{ $post->category->name }}" class="card-img-top" alt="{{ $post->category->name }}">
             <article class="my-3 fs-5">
             {!! $post->body !!}
