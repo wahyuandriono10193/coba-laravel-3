@@ -67,4 +67,4 @@
     {{ $posts->links() }}
     </div>
 @endsection
-
+  
