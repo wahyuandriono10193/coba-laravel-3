@@ -5,7 +5,7 @@
     <h1 class="h2">Create new post</h1>
   </div>
 <div class="col-lg-8"> 
-    <form method="post" action="/dashboard/posts">
+    <form method="post" action="/dashboard/posts" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label ">Title</label>
@@ -38,6 +38,15 @@
               </select>
         </div>
         <div class="mb-3">
+            <label for="image" class="form-label @error('image') is-invalid @enderror" >Post Image</label>
+            <input class="form-control" type="file" id="image" name="image">
+            @error('image')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+          </div>
+        <div class="mb-3">
             <label for="body" class="form-label">Body</label>
             @error('body')
             <P class="text-danger">{{ $message }}</P>
@@ -61,3 +70,4 @@
     });
 </script>
 @endsection
+
