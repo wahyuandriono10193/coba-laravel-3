@@ -28,8 +28,11 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
-        //
-    }
+        return view('dashboard.categories.create',[
+                'categories' =>Category::all()
+            ]);
+       
+        }
 
     /**
      * Store a newly created resource in storage.
@@ -39,8 +42,16 @@ class AdminCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:20',
+            'slug' => 'required'
+        ]);
+
+        Category::create($validatedData);
+
+        return redirect('dashboard/categories')->with('success','New Category has been added!');
     }
+
 
     /**
      * Display the specified resource.
@@ -84,6 +95,8 @@ class AdminCategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        Category::destroy($category->slug);
+
+        return redirect('dashboard/categories')->with('success','category has been deleted!');
     }
 }

@@ -7,10 +7,15 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <!-- Bootstrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     {{-- my style --}}
     <link rel="stylesheet" href="/css/style.css">
+    
+    {{-- carousel css --}}
+    <link rel="stylesheet" href="/css/carousel.css">
 
     <title>wpu blog | {{ $title }}</title>
   </head>
@@ -18,7 +23,7 @@
       <!-- navbar -->  
        @include('partials.navbar') 
       <!-- section -->
-      <div class="container mt-4">
+      <div >
         @yield('container')
       </div>
 
